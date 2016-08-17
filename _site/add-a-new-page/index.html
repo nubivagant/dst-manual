@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+  <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+
+
+
+  <!-- Title, Twitter, and OpenGraph data
+================================================== -->
+
+  <meta name="twitter:site" content="@18F">
+  <meta name="twitter:creator" content="@18F">
+  <meta property="og:type" content="website" />
+
+  
+
+  
+
+  <!-- title, description, and image may change per-page, per-post -->
+  
+    <title>Add a new page - 18F Guides Template</title>
+    <meta property="og:title" content="Add a new page - 18F Guides Template" />
+  
+
+  
+
+  <!-- use large summary card for posts with images, normal summary otherwise -->
+  
+    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://18f.gsa.gov/assets/images/18F-Logo-L.png" />
+  
+
+  <!-- If any of the file paths after guides_style_18f_asset_root change, the old ones need to stay in place. See https://github.com/18F/pages-server/issues/55 for more information. -->
+  <link rel="shortcut icon" type="image/ico" href="/assets/favicons/favicon.ico" />
+  <link rel="icon" type="image/png" href="/assets/favicons/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/assets/favicons/18f-center-57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicons/18f-center-72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicons/18f-center-114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicons/18f-center-144.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/18f-center-192.png" />
+  <link href='/assets/css/google-fonts.css' rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="/assets/css/styles.css" type='text/css' />
+  <!--[if lt IE 9]>
+    <script src="/assets/js/html5shiv.js"></script>
+    <script src="/assets/js/respond.js"></script>
+  <![endif]-->
+</head>
+
+
+  <body>
+
+    <div class="container">
+      <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
+
+      <header role="banner">
+
+        <div class="wrap">
+
+
+          <h1 class="site-title"><a class="title-link" href="/">18F Guides Template</a></h1>
+
+          <form action="/search/" class="search-interface">
+  <div class="field">
+    <label>
+      <span class="label-text">Search</span>
+      <input type="search" id="search-input" name="q"
+       placeholder="Search - click or press '/'">
+    </label>
+  </div>
+  <button type="submit">Search</button>
+</form>
+
+
+          <div class="back-link"><a href="https://pages.18f.gov/guides/">&laquo; Read more 18F Guides</a></div>
+
+
+        </div>
+
+      </header>
+
+      <div class="wrap content">
+
+        <section id="main" class="main-content" role="main">
+          <h2>Add a new page</h2>
+          <p>To add new pages, create a 
+<a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> file in the
+<code>_pages/</code> directory of the repository. For example, the Markdown text for
+this page is
+<a href="https://github.com/18F/guides-template/blob/18f-pages/_pages/add-a-new-page.md"><code>_pages/new-page.md</code></a>.</p>
+
+<p>The Markdown document begins with this <a href="http://jekyllrb.com/docs/frontmatter/">YAML front
+matter</a>:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">Add a new page</span>
+<span class="nn">---</span>
+</code></pre></div>
+<p>For most pages this will suffice. The URL of the page will match the file path
+relative to the <code>_pages</code> directory, minus the <code>.md</code> extension. For example,
+the source for this page appears as
+<a href="https://github.com/18F/guides-template/tree/18f-pages/_pages/add-a-new-page.md"><code>_pages/add-a-new-page.md</code></a>.</p>
+
+<p>For the home page of your guide, the front matter should contain a
+<code>permalink: /</code> entry like this:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">permalink</span><span class="pi">:</span> <span class="s">/</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">Introduction (or whatever title you choose)</span>
+<span class="nn">---</span>
+</code></pre></div>
+<p>You can also explicitly set a <code>permalink:</code> like so:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">permalink</span><span class="pi">:</span> <span class="s">/add-a-new-page/</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">Add a new page</span>
+<span class="nn">---</span>
+</code></pre></div>
+<p>If you add your own custom <code>permalink:</code>, <strong>the &#39;<code>/</code>&#39; at the end of the
+<code>permalink:</code> attribute is important!</strong> It ensures the page is generated as
+<code>/add-a-new-page/index.html</code>. Without it, the page generates as
+<code>/add-a-new-page.html</code>.</p>
+
+<h3>Setting the title in the navigation bar</h3>
+
+<p>By default, the title appearing in the navigation bar will match the <code>title:</code>
+specified in the front matter of the page. If you&#39;d like to specify a
+different name in the navigation bar, you can also set the <code>navtitle:</code>
+property:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">Since brevity is the soul of wit, I'll be brief.</span>
+<span class="s">navtitle</span><span class="pi">:</span> <span class="s">Polonius's advice</span>
+<span class="nn">---</span>
+</code></pre></div>
+<h3>Link to other pages within the guide</h3>
+
+<p>Every link to another page <em>must</em> be prefixed with
+<code>{{ site.baseurl }}</code>. For example,
+this link to <a href="/add-images/">Add images</a>
+appears in the Markdown source as:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">[Add images]({{ site.baseurl }}/add-images/).
+</code></pre></div>
+<p>Also, <strong>the &#39;<code>/</code>&#39; at the end is important</strong>, but for a different reason. If
+you forget the <code>/</code>, you may get page-not-found errors when following a link
+locally. This is because the web server built into Jekyll will look for a
+<em>file</em> named <code>add-images</code> instead of an <code>add-images</code> <em>directory</em> containing an
+<code>index.html</code> file.</p>
+
+<h3>Next steps</h3>
+
+<p>Click the <em>Add images</em> entry in the table of contents to learn how
+to add images to your guide, or click <em>Make a child page</em> to see how to
+make chapters appear as children of related chapters.</p>
+
+        </section>
+
+        <aside>
+  <p class="intro"></p>
+  <nav class="sidebar-nav" role="navigation">
+    <ul>
+        <li class="group ">
+          <a href="/"  
+            title="Introduction">Introduction</a>
+          
+          
+
+        </li>
+        <li class="group sidebar-nav-active">
+          <a href="/add-a-new-page/"  
+            title="Current Page
+                  ">Add a new page</a>
+          
+          
+
+<button class="expand-subnav"
+        aria-expanded="true"
+        aria-controls="nav-collapsible-2">+</button>
+<ul class="nav-children" id="nav-collapsible-2"
+    aria-hidden="false">
+  
+  
+    <li class="">
+      <a href="/add-a-new-page/make-a-child-page/"
+        title="Make a child page">Make a child page</a>
+      
+      
+
+      
+    </li>
+</ul>
+
+        </li>
+        <li class="group ">
+          <a href="/add-images/"  
+            title="Add images">Add images</a>
+          
+          
+
+        </li>
+        <li class="group ">
+          <a href="/update-the-config-file/"  
+            title="Update the config file">Update the config file</a>
+          
+          
+
+<button class="expand-subnav"
+        aria-expanded="true"
+        aria-controls="nav-collapsible-4">+</button>
+<ul class="nav-children" id="nav-collapsible-4"
+    aria-hidden="false">
+  
+  
+    <li class="">
+      <a href="/update-the-config-file/understanding-baseurl/"
+        title="Understanding the `baseurl:` property">Understanding the `baseurl:` property</a>
+      
+      
+
+      
+    </li>
+</ul>
+
+        </li>
+        <li class="group ">
+          <a href="/github-setup/"  
+            title="GitHub setup">GitHub setup</a>
+          
+          
+
+        </li>
+        <li class="group ">
+          <a href="/post-your-guide/"  
+            title="Post your guide">Post your guide</a>
+          
+          
+
+        </li>
+        <li class="group ">
+          <a href="/advanced-features/"  
+            title="Advanced features">Advanced features</a>
+          
+          
+
+        </li>
+    </ul>
+  </nav>
+</aside>
+
+
+      </div><!-- /.wrap content -->
+
+      <footer role="contentinfo">
+  <div class="wrap">
+    <p>This project is maintained by <a href="https://18f.gsa.gov">18F</a>. The source is available at <a href="https://github.com/18F/guides-template">https://github.com/18F/guides-template</a>.</p>
+
+    <p>Hosted on <a href="https://github.com/18F/pages/">18F Pages</a>.
+    The <a href="https://github.com/18F/guides-template/">18F Guides theme</a> is based on <a href="https://github.com/cfpb/docter/">DOCter</a> from <a href="http://cfpb.github.io/">CFPB</a>.</p>
+    <p><a href="https://github.com/18F/guides-template/edit/18f-pages/_pages/add-a-new-page.md">Edit this page</a> or <a href="https://github.com/18F/guides-template/issues">file an issue</a> on GitHub.</p>
+  </div><!--/.wrap -->
+</footer>
+
+
+    </div> <!-- /.container -->
+
+  </body>
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48605964-19', 'auto');
+
+  // anonymize user IPs (chops off the last IP triplet)
+  ga('set', 'anonymizeIp', true);
+  ga('set', 'forceSSL', true);
+  ga('send', 'pageview');
+</script>
+
+<!-- Digital Analytics Program roll-up, see https://analytics.usa.gov for data -->
+<script id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=GSA"></script>
+
+<!-- If any of the file paths after guides_style_18f_asset_root change, the old ones need to stay in place. See https://github.com/18F/pages-server/issues/55 for more information. -->
+<script src="/assets/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="/assets/js/accordion.js"></script>
+<script src="/assets/js/vendor/private-eye-1.1.0.js"></script>
+<script src="/assets/js/18f-guide.js"></script>
+<script>JEKYLL_PAGES_API_SEARCH_BASEURL = '';</script>
+<script async src="/assets/js/search-bundle.js"></script>
+
+</html>
